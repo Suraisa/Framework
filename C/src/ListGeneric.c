@@ -123,6 +123,24 @@ void ErasedList(LIST *list)
     *list = NULL;
 }
 
+LIST PopInFront(LIST *list, unsigned long int number)
+{
+    if(number<1)
+        return NULL;
+        
+    LIST popedList = *list;
+    LIST copy = *list;
+    int counter = 1;
+    while (!IsEmpty(copy->next) && counter < number)
+    {
+        copy = copy->next;
+        counter++;
+    }
+    *list = copy->next;
+    copy->next = NULL;
+    return popedList;
+}
+
 void Display(LIST list)
 {
     LIST nodeI;
